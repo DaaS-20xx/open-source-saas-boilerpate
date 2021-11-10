@@ -2,7 +2,7 @@
 import { JWTFunctions } from '@src/modules/jwt/JWTFunctions';
 
 var globalVars = {
-    COMPANY_NAME: 'Company name'
+    COMPANY_NAME: 'DaaS'
 };
 
 export { globalVars };

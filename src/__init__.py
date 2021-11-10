@@ -27,6 +27,9 @@ def create_app():
 def register_blueprints(app):
     from src.app.auth.auth_blueprint import auth_blueprint
     from src.app.dashboard.dashboard_blueprint import dashboard_blueprint
+    from src.app.homepage.homepage_blueprint import homepage_blueprint
+
+    app.register_blueprint(homepage_blueprint)
 
     blueprints = [dashboard_blueprint, auth_blueprint] 
     for blueprint in blueprints:

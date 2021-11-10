@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.9-alpine
 
 RUN apk update && \
     apk add --no-cache \
@@ -22,8 +22,10 @@ COPY . /app
 RUN npm install --global npm && \
     npm update && \
     npm install && \
+    npm rebuild node-sass && \
     npm run dev
 
+RUN flask dbcreate
 
 ENTRYPOINT [ "./entrypoint.sh" ]
 

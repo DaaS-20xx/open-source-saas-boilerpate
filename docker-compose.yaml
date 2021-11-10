@@ -4,10 +4,13 @@ services:
   db:
     image: postgres:12.0-alpine
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: dev
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 6543:5432
 
   app:
     build: .
