@@ -19,8 +19,8 @@ def send_to_sqs_queue(Message, userid):
     print("stripe objet received")
     print(Message)
     sqs_client = boto3.client("sqs", region_name = "eu-central-1",
-        aws_access_key_id='AKIAVJNCNQJFMBKHSVG7',
-        aws_secret_access_key='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'
+        aws_access_key_id='aws_access_key_id',
+        aws_secret_access_key='aws_secret_access_key'
     )
     
     print("convert message to JSON")
