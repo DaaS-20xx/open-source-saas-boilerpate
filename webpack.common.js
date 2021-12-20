@@ -57,7 +57,7 @@ const config = {
             test: /\.jsx?/,
             loader: 'babel-loader',
             exclude: /node_modules/,
-            query:{
+            options:{
                 presets: ['@babel/react', '@babel/preset-env'],
                 plugins: [
                         ['@babel/plugin-proposal-decorators', { 'legacy': true }],  

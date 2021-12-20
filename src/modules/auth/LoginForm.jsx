@@ -62,7 +62,9 @@ export default class LoginForm extends Component {
             email: this.state.email, 
             password: this.state.password,
             remember: this.state.remember
-        };
+        }
+        //var headers = {"X-CSRFToken": document.querySelector('meta[name="csrf-token"]')};
+        //var headers = {"X-CSRFToken": document.getElementById("csrf-token").getAttribute("content")}
         try {
             let response = await axios.post('/api/auth/login', data);
             this.setState({ errors: AuthUIFunctions.handleResponse(response, '/app'), loading: false});

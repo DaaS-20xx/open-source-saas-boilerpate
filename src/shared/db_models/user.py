@@ -1,3 +1,4 @@
+import datetime
 from sqlalchemy.dialects.postgresql import UUID
 from flask_sqlalchemy import SQLAlchemy
 import uuid
@@ -26,6 +27,17 @@ class User(UserMixin, db.Model):
     account_id = db.Column(UUID(as_uuid=True), db.ForeignKey('account.id'))
     account = db.relationship('Account', back_populates='user', cascade='all,delete')
     created = db.Column(db.DateTime(), nullable=True)
+    ### new column: Subscription Plan (Small, Medium, Business)
+    plan = db.Column(db.String(30), nullable=True)
+    ### new column: Plan Start Date (date time)
+    plan_start_dt = db.Column(db.DateTime(), nullable=True)
+    ### new column: Plan Expiration Date (date time)
+    plan_exp_dt = db.Column(db.DateTime(), nullable=True)
+    ### new column: total initial minutes for the period (integer, number of seconds)
+    plan_minutes = db.Column(db.Integer, nullable=True)
+    ### new column: remaining minutes (remaining minutes in the current period) (integer, number of seconds)
+    remaining_minutes = db.Column(db.Integer, nullable=True)
+
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)

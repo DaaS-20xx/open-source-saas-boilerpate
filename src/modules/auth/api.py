@@ -5,7 +5,7 @@ from flask_marshmallow import Marshmallow
 from marshmallow import fields, validate, ValidationError, EXCLUDE, INCLUDE
 from flask_restplus import Namespace, Resource, fields, Api, abort
 from functools import wraps
-
+import sys
 from src.shared.utils.global_functions import get_config_var
 from src.shared.utils.extensions import db, db_schema, login_manager
 
@@ -116,8 +116,10 @@ class user_login(Resource):
             if existing_user.verify_hash(password):
                 login_user(existing_user, auth_logic_api.payload.get('remember'))
                 login_response = jwt_api.login_create_tokens(existing_user.id)
+                print(login_response, file=sys.stdout)
                 return make_response(login_response, 200)
             else:
+                print("final else with wrong password")
                 return jsonify({
                     'result': False,
                     'error': 'Email or password is wrong.'

@@ -10,7 +10,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
-      - 6543:5432
+      - 5432:5432
 
   app:
     build: .
@@ -23,6 +23,8 @@ services:
       - jwt_secret_key=${jwt_secret_key:-FAKE_JWT_SECRET_KEY}
       - secret_key=${secret_key:-FAKE_SECRET_KEY}
       - db_url=postgres://postgres:password@db:5432/dev
+      - PYTHONUNBUFFERED=0
+      - FLASK_DEBUG=1
     ports:
       - 5000:5000
     volumes:

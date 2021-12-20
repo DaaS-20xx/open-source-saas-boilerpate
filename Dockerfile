@@ -19,13 +19,15 @@ COPY package.json package.json
 
 COPY . /app
 
-RUN npm install --global npm && \
+RUN npm install --global npm &&\ 
+    #--no-package-lock && \
     npm update && \
     npm install && \
+    #npm install node-saas \
     npm rebuild node-sass && \
     npm run dev
 
-RUN flask dbcreate
+#RUN flask dbcreate
 
 ENTRYPOINT [ "./entrypoint.sh" ]
 

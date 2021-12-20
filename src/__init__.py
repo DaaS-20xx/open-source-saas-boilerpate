@@ -3,7 +3,7 @@ from pathlib import Path
 
 from flask import Flask
 from config import ConfigHelper
-
+from flask_wtf.csrf import CSRFProtect
 from src.shared.utils.extensions import db, db_schema, mail, alembic, login_manager
 from src.shared.utils.server_error_handler import app_error
 
@@ -25,16 +25,21 @@ def create_app():
 # automate
 # what if any other blueprint would register itself?
 def register_blueprints(app):
+    csrf = CSRFProtect(app)
     from src.app.auth.auth_blueprint import auth_blueprint
     from src.app.dashboard.dashboard_blueprint import dashboard_blueprint
     from src.app.homepage.homepage_blueprint import homepage_blueprint
-
+    from src.app.payment.payment_blueprint import payment_blueprint
+    csrf.exempt(auth_blueprint)
     app.register_blueprint(homepage_blueprint)
+    app.register_blueprint(payment_blueprint)
 
     blueprints = [dashboard_blueprint, auth_blueprint] 
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
-
+    
+    #csrf.exempt(auth_blueprint)
+    
 def init_global_functions(app):
     from src.shared.utils import global_functions
     global_functions.init(app)

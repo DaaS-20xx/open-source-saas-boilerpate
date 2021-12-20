@@ -13,8 +13,10 @@
     <!--Core CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link id="theme-sheet" rel="stylesheet" href="assets/css/core.css">
+    <!--link rel="stylesheet" href="assets/css/app.css"-->
+    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/app.css") }}">
+    <!--link id="theme-sheet" rel="stylesheet" href="assets/css/core.css"-->
+    <link id="theme-sheet" rel="stylesheet" href="{{ url_for("static", filename="assets/css/core.css") }}">
 </head>
 
 <body class="is-theme-core">
@@ -27,7 +29,7 @@
               <!-- Brand -->
               <div class="navbar-brand">
                   <a class="navbar-item" href="/">
-                      <img class="switcher-logo" src="assets/img/logos/logo/bulkit-core.svg" alt="">
+                      <img class="switcher-logo" src="{{ url_for("static", filename="assets/img/logos/logo/bulkit-core.svg") }}" alt="">
                   </a>
       
                   <!-- Sidebar Trigger -->
@@ -198,7 +200,7 @@
                 <div class="column">
                     <div class="footer-column">
                         <div class="footer-logo">
-                            <img class="switcher-logo-w" src="assets/img/logos/logo/bulkit-core-w.svg" alt="">
+                            <img class="switcher-logo-w" src="{{ url_for("static", filename="assets/img/logos/logo/bulkit-core-w.svg") }}" alt="">
                         </div>
                         <div class="footer-header">
                             <nav class="level is-mobile">
@@ -236,7 +238,7 @@
         <div class="category-menu-wrapper">
             <!-- Menu -->
             <ul class="categories">
-                <li class="square-logo"><img src="assets/img/logos/square-white.svg" alt=""></li>
+                <li class="square-logo"><img src="{{ url_for("static", filename="assets/img/logos/square-white.svg") }}" alt=""></li>
                 <li class="category-link is-active" data-navigation-menu="demo-pages"><i class="sl sl-icon-layers"></i></li>
                 <li class="category-link" data-navigation-menu="onepagers"><i class="sl sl-icon-docs"></i></li>
                 <li class="category-link" data-navigation-menu="components"><i class="sl sl-icon-grid"></i></li>
@@ -247,7 +249,7 @@
                 <li>
                     <!-- Theme author -->
                     <a href="https://cssninja.io" target="_blank">
-                        <img class="main-menu-author" src="assets/img/logos/cssninja.svg" alt="">
+                        <img class="main-menu-author" src="{{ url_for("static", filename="assets/img/logos/cssninja.svg") }}" alt="">
                     </a>
                 </li>
             </ul>
@@ -692,11 +694,11 @@
     <div id="chat-widget">
         <div class="chat-widget-body is-closed">
             <div class="chat-header">
-                <div class="close-chat is-hidden-desktop is-hidden-tablet"><img src="assets/img/graphics/legacy/close-small.svg" alt=""></div>
+                <div class="close-chat is-hidden-desktop is-hidden-tablet"><img src="{{ url_for("static", filename="assets/img/graphics/legacy/close-small.svg") }}" alt=""></div>
                 <div class="chat-team">
                     <div class="team-member has-text-centered">
                         <img src="https://via.placeholder.com/250x250" alt=""
-                            data-demo-src="assets/img/avatars/alan.jpg">
+                            data-demo-src="{{ url_for("static", filename="assets/img/avatars/alan.jpg") }}">
                         <div class="is-handwritten">Alan maynard</div>
                     </div>
                 </div>
@@ -712,7 +714,7 @@
                 </div>
                 <div class="chat-message from">
                     <img src="https://via.placeholder.com/250x250" alt=""
-                        data-demo-src="assets/img/avatars/alan.jpg">
+                        data-demo-src="{{ url_for("static", filename="assets/img/avatars/alan.jpg") }}">
                     <div class="bubble-wrapper">
                         <div class="timestamp">02:49 pm</div>
                         <div class="chat-bubble">
@@ -728,7 +730,7 @@
                         </div>
                     </div>
                     <img src="https://via.placeholder.com/250x250" alt=""
-                        data-demo-src="assets/img/avatars/helen.jpg">
+                        data-demo-src="{{ url_for("static", filename="assets/img/avatars/helen.jpg") }}">
                 </div>
             </div>
             <div class="message-input">
@@ -742,8 +744,8 @@
     </div>
     <!-- /Chat widget -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/core.js"></script>
+    <script src="{{ url_for("static", filename="assets/js/app.js") }}"></script>
+    <script src="{{ url_for("static", filename="assets/js/core.js") }}"></script>
 </body>
 
 </html>
