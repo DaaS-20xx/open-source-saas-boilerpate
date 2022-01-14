@@ -72,7 +72,13 @@
                       <!-- Navbar item -->
                       <a class="navbar-item is-slide" href="{{ url_for('auth.all_auth_requests',path='login') }}">
                           Login
+                      </a>                      
+                      <a class="navbar-item is-slide" href="{{ url_for('home.download_app') }}">
+                          Download
                       </a>
+                      <a class="navbar-item is-slide" href="{{ url_for('home.faq') }}">
+                        F.A.Q.
+                      </a>   
                   </div>
       
                   <!-- Navbar end -->
@@ -83,6 +89,13 @@
                               class="button button-signup btn-outlined is-bold btn-align light-btn rounded raised">
                               Sign up
                           </a>
+                      </div>
+                      <!-- Login button -->
+                      <div class="navbar-item">
+                        <a id="#login-btn" href="{{ url_for('auth.all_auth_requests',path='login') }}"
+                            class="button button-cta is-bold btn-align secondary-btn rounded raised">
+                            Login
+                        </a>
                       </div>
                   </div>
               </div>
@@ -113,7 +126,7 @@
                     <h3 class="plan-name">Small</h3>
                     <div class="pricing-card-body">
                       <div class="plan-price per-month animated preFadeInUp fadeInUp">
-                        <small>$</small> 24 <small>/ month</small>
+                        <small>€</small> 24.99 <small>/ month</small>
                       </div>
                       <ul class="plan-features">
                         <li><span class="feature-count-text">500 Minutes of Transcription per Month</span></li>
@@ -122,7 +135,7 @@
                         <li><span class="feature-count-text">All Languages available</span></li>
                       </ul>
                       <div class="pt-20 pb-20">
-                        <a class="button button-cta rounded raised primary-btn btn-outlined is-bold">Buy Now</a>
+                        <a href="{{ url_for('auth.all_auth_requests',path='login') }}" class="button button-cta rounded raised primary-btn is-bold">Buy Now</a>
                       </div>
                     </div>
                   </div>
@@ -134,7 +147,7 @@
                     <h3 class="plan-name">Medium</h3>
                     <div class="pricing-card-body">
                       <div class="plan-price per-month animated preFadeInUp fadeInUp">
-                        <small>$</small> 40 <small>/ month</small>
+                        <small>€</small> 39.99 <small>/ month</small>
                       </div>
                       <ul class="plan-features">
                         <li><span class="feature-count-text">1000 Minutes of Transcription per Month</span></li>
@@ -143,7 +156,7 @@
                         <li><span class="feature-count-text">All Languages available</span></li>
                       </ul>
                       <div class="pt-20 pb-20">
-                        <a href="{{ url_for('home.subscribe') }}" class="button button-cta rounded raised primary-btn is-bold">Buy Now</a>
+                        <a href="{{ url_for('auth.all_auth_requests',path='login') }}" class="button button-cta rounded raised secondary-btn is-bold">Buy Now</a>
                       </div>
                     </div>
                   </div>
@@ -151,11 +164,11 @@
     
                 <div class="column is-4">
                   <!-- Pricing table -->
-                  <div class="flex-card header-pricing-card primary hover-inset">
-                    <h3 class="plan-name">Business</h3>
+                  <div class="flex-card header-pricing-card accent hover-inset">
+                    <h3 class="plan-name">Top</h3>
                     <div class="pricing-card-body">
                       <div class="plan-price per-month animated preFadeInUp fadeInUp">
-                        <small>$</small> 105 <small>/ month</small>
+                        <small>€</small> 104.99 <small>/ month</small>
                       </div>
                       <ul class="plan-features">
                         <li><span class="feature-count-text">3000 Minutes of Transcription per Month</span></li>
@@ -164,7 +177,7 @@
                         <li><span class="feature-count-text">All Languages available</span></li>
                       </ul>
                       <div class="pt-20 pb-20">
-                        <a class="button button-cta rounded raised primary-btn btn-outlined is-bold">Buy Now</a>
+                        <a href="{{ url_for('auth.all_auth_requests',path='login') }}" class="button button-cta rounded raised accent-btn is-bold">Buy Now</a>
                       </div>
                     </div>
                   </div>
@@ -186,123 +199,209 @@
           <h4>Do you have some questions ? Find answers in our FAQ.</h4>
         </div>
     
-        <div class="content-wrapper">
-          <div class="columns">
-            <div class="column is-4 is-offset-2">
-              <div class="content">
-                <p class="text-bold color-primary">1. How do i get started?</p>
-                <p>
-                  Lorem ipsum dolor sit amet, accusata voluptatibus per eu, probo
-                  summo argumentum ea vel. Pri nonumy sententiae ex, eam adhuc
-                  regione tibique te. Et sit alii vero harum, ne his viderer
-                  consectetuer.
-                </p>
-              </div>
-              <div class="content">
-                <p class="text-bold color-primary">3. Where can i get training?</p>
-                <p>
-                  Lorem ipsum dolor sit amet, accusata voluptatibus per eu, probo
-                  summo argumentum ea vel. Pri nonumy sententiae ex, eam adhuc
-                  regione tibique te. Et sit alii vero harum, ne his viderer
-                  consectetuer.
-                </p>
-              </div>
-              <div class="content">
-                <p class="text-bold color-primary">5. Are updates mandatory?</p>
-                <p>
-                  Lorem ipsum dolor sit amet, accusata voluptatibus per eu, probo
-                  summo argumentum ea vel. Pri nonumy sententiae ex, eam adhuc
-                  regione tibique te. Et sit alii vero harum, ne his viderer
-                  consectetuer.
-                </p>
-              </div>
-            </div>
-            <div class="column is-4">
-              <div class="content">
-                <p class="text-bold color-primary">
-                  2. How can i add people to my team?
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, accusata voluptatibus per eu, probo
-                  summo argumentum ea vel. Pri nonumy sententiae ex, eam adhuc
-                  regione tibique te. Et sit alii vero harum, ne his viderer
-                  consectetuer.
-                </p>
-              </div>
-              <div class="content">
-                <p class="text-bold color-primary">
-                  4. Do you have a refund policy?
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, accusata voluptatibus per eu, probo
-                  summo argumentum ea vel. Pri nonumy sententiae ex, eam adhuc
-                  regione tibique te. Et sit alii vero harum, ne his viderer
-                  consectetuer.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Newsletter section -->
-    <div class="section section-feature-grey is-relative footer-waves giant-pb">
-      <div class="container">
-        <!-- Title -->
-        <div class="section-title-wrapper has-text-centered">
-          <div class="bg-number">#</div>
-          <h2 class="section-title-landing">Subscribe to our Newsletter</h2>
-          <h4>Subscribe to our Newsletter to get our latest updates.</h4>
-        </div>
-        <div class="content has-text-centered giant-pb">
-          <div class="columns">
-            <div class="column is-6 is-offset-3">
-              <!-- Styled input that shows only on desktop and tablet -->
-              <div class="giant-input-wrapper is-wavy is-hidden-mobile">
-                <div class="giant-input">
-                  <input type="text" placeholder="Your email address goes here" />
-                  <button
-                    class="
-                      button
-                      inner
-                      button-cta
-                      btn-align
-                      primary-btn
-                      rounded
-                      raised
-                      no-lh
-                    "
-                  >
-                    Subscribe
-                  </button>
+        <div class="faq-wrapper">
+            <div class="columns">
+                <div class="column is-5 is-offset-1">
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>How can I properly setup an account?</h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>
+                                Can I integrate my Mailchimp lists with my account and segment
+                                subscribers?
+                            </h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>
+                                Can I integrate with other CRM software and directly pull
+                                records from the database.?
+                            </h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>Can I change my plan after sign up?</h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>Can I ask for specific features?</h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-    
-              <!-- Fallback input for mobile -->
-              <div class="mobile-input is-hidden-desktop is-hidden-tablet">
-                <input
-                  class="input is-medium"
-                  type="text"
-                  placeholder="Email address"
-                />
-                <button
-                  class="
-                    button button-cta
-                    btn-align
-                    primary-btn
-                    raised
-                    is-fullwidth
-                    no-lh
-                    mt-10
-                  "
-                >
-                  Subscribe
-                </button>
-              </div>
+                <div class="column is-5">
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>
+                                Can I invite people who don't own an account yet to my team?
+                            </h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>
+                                How much records are allowed to process monthly when on the free
+                                plan?
+                            </h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>Do you make custom implementations?</h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>
+                                Are allowed to sign up for more than one account with the same
+                                email address?
+                            </h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
+                    <!--Faq Block-->
+                    <div class="faq-block">
+                        <div class="block-header">
+                            <div class="header-icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <h3>Can we manage user roles?</h3>
+                        </div>
+                        <div class="block-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Invidiosum nomen est, infame, suspectum. Utilitatis causa
+                                amicitia est quaesita. Non laboro, inquit, de nomine. Duo Reges:
+                                constructio interrete. Aliter homines, aliter philosophos loqui
+                                putas oportere?
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+
       </div>
     </div>
     
@@ -419,7 +518,7 @@
             <div class="navigation-menu-header">
                 <span>Demo pages</span>
                 <a class="ml-auto hamburger-btn navigation-close" href="javascript:void(0);">
-                    <span class="menu-toggle">
+                    <span class="menu-toggle">  
                         <span class="icon-box-toggle">
                             <span class="rotate">
                                 <i class="icon-line-top"></i>

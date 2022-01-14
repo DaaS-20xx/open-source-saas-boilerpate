@@ -4,14 +4,29 @@
 Billing
 {% endblock %}
 {% block content %}
-<h1 class="h3 mt-3 mb-4 text-gray-800">Billing Page</h1>
+<div class="pageloader"></div>
+<div class="hero is-relative is-theme-primary">
+    <div id="main-hero" class="hero-body">
+      <div class="container">
+        <!--div class="columns is-vcentered">
+          <div class="column is-6 is-centered"-->
+            <h1 class="title main-title">Billing Page</h1>
+            <h2 class="title is-3 light-text">This page shows current or past subscriptions</h2>
+          <!--/div>
+        </div-->
+      </div>
+    </div>
+</div>
+<!--h1 class="h3 mt-3 mb-4 text-gray-800">Billing Page</h1-->
 
 {% if subscription_active %}
 
-<p>This page shows your subscriptions, whether they are active and when you have been billed.</p>
+<!--p>This page shows your subscriptions, whether they are active and when you have been billed.</p-->
+<div class="section"></div>
 
-<h3>Your Subscriptions</h3>
-<p>If you cancel a subscription, it can be reactivated until the end of the period. The subscription remains active for the period that you paid for.</p>
+<h1 class="title main-title">Your Subscriptions</h1>
+<h4>If you cancel a subscription, it can be reactivated until the end of the period. The subscription remains active for the period that you paid for.</h4>
+
 <div id="output" class="text-success"></div>
 <div class="card row mt-3">
     <div class="col-sm-12">
@@ -62,7 +77,9 @@ Billing
 </div>
 
 {% else %}
-<p>You do not have an active subscription.</p>
+<div class="section">
+</div>
+<h1 class="title main-title">You do not have an active subscription.</h1>
 {% endif %}
 
 {% endblock %}

@@ -112,3 +112,9 @@ def subscription_ended():
 def get_active_subscription(user_id):
     action = StripeAction(current_app)
     return action.get_active_subscription(user_id)
+
+@payment_blueprint.route("/get_active_subscription_by_email/<user_email>", methods=["GET"])
+def get_active_subscription_by_email(user_email):
+    action = StripeAction(current_app)
+    print("entered api", file=sys.stdout)
+    return action.get_active_subscription_by_email(user_email)

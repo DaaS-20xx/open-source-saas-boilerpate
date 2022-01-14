@@ -6,9 +6,9 @@ auth_blueprint = Blueprint('auth', __name__, template_folder='../../app/auth')
 
 
 auth_app = Api (auth_blueprint,
-    title='SaaSForge auth pages',
-    version='2.0',
-    description='SaaSForge authentication pages'
+    title='DaaS auth pages',
+    version='1.0',
+    description='DaaS authentication pages'
 )
 
 # This is where you add API namespaces

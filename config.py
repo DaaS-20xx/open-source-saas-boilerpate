@@ -17,13 +17,14 @@ class Config(object):
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
     WTF_CSRF_CHECK_DEFAULT = False
+    WS_API_URL = os.environ.get('WS_API_URL')
 
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = os.environ.get('MAIL_PORT')
     MAIL_USE_SSL = True if os.getenv('MAIL_USE_SSL') == 'True' else False
     MAIL_USE_TLS = True if os.getenv('MAIL_USE_TLS') == 'True' else False
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_USERNAME')
+    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL')
 
@@ -31,8 +32,8 @@ class Config(object):
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY')
     AWS_BUCKET_NAME = os.environ.get('AWS_BUCKET_NAME') # Create additional variables for other buckets
-    AWS_SQS_QUEUE_URL = 'https://sqs.eu-central-1.amazonaws.com/363802231370/TranscribeSessions.fifo'
-    AWS_SQS_QUEUE_NAME = 'TranscribeSessions.fifo'
+    AWS_SQS_QUEUE_URL = 'https://sqs.eu-central-1.amazonaws.com/363802231370/RegisteredUsersQueue'
+    AWS_SQS_QUEUE_NAME = 'RegisteredUsersQueue'
     
     
     #STRIPE Cancel & Success return-urls to pass during stripe.checkout.Session.create in strype_action.py (invoked by /setup_payment)
@@ -54,7 +55,7 @@ class Config(object):
     # Configure three endpoints; checkout.session.completed, invoice.payment_succeeded, customer.subscription.deleted
     # https://dashboard.stripe.com/webhooks
     WEBHOOK_SIGNING_SECRET='whsec_1x3VOzAp117XJOLEQrgycsZqwdU0z0aq'
-    WEBHOOK_CHECKOUT_SESSION_COMPLETED='whsec_ieFGgePn5lc7gI07xBKbxjLlPNcmVHlO'
+    WEBHOOK_CHECKOUT_SESSION_COMPLETED='whsec_cMUwwIMD9oCDDW5MfHUTNz8izCoe6xV6'
     WEBHOOK_INVOICE_PAYMENT_SUCCEEDED='whsec_yhJouD3zYctgH9kPQffkSQ4aPyyAGWzE'
     WEBHOOK_CUSTOMER_SUBSCRIPTION_DELETED='whsec_dT95mU3oXpsHpbcpLi3RpEpeEyl2H0qW'
     

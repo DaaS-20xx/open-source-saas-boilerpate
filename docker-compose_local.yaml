@@ -35,8 +35,6 @@ services:
       - 5000
     volumes:
       - .:/app
-    x-aws-policies:
-      - "arn:aws:iam::363802231370:policy/ecsexectaskrolepolicy"      
 
   nginx:
     build: ./nginx
@@ -44,8 +42,6 @@ services:
       - 1337:80
     depends_on:
       - app
-    x-aws-policies:
-      - "arn:aws:iam::363802231370:policy/ecsexectaskrolepolicy"
 
 volumes:
   postgres_data:

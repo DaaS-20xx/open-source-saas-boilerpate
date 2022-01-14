@@ -48,7 +48,7 @@ class FrontendAction():
             sub_cancelled_at = stripe_obj.subscription_cancelled_at
             
             if billing_page and sub_cancelled_at != None:
-                sub_cancelled_at =  datetime.utcfromtimestamp(sub_cancelled_at).strftime('%Y-%m-%d %H:%M:%S')
+                sub_cancelled_at =  datetime.datetime.utcfromtimestamp(sub_cancelled_at).strftime('%Y-%m-%d %H:%M:%S')
 
         if billing_page:
             return sub_active, show_reactivate, sub_cancelled_at

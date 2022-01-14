@@ -5,9 +5,10 @@ from flask_marshmallow import Marshmallow
 from marshmallow import fields, validate, ValidationError, EXCLUDE, INCLUDE
 from flask_restplus import Namespace, Resource, fields, Api, abort
 from functools import wraps
-import sys
+import sys, boto3, os, json, traceback
 from src.shared.utils.global_functions import get_config_var
 from src.shared.utils.extensions import db, db_schema, login_manager
+from src.shared.services import publish_sns
 
 # Adapters
 from src.shared.services import db_user_service
@@ -61,7 +62,8 @@ class user_registration(Resource):
             if save_result:
                 # 2. Generate confirmation token
                 token = new_user.generate_verification_token()
-
+                print("TOKEN in Registration for: "+email)
+                print(token, file=sys.stdout)
                 # 3. Generate email bodies and send confirmation link asynchronously
                 send_verification_email(new_user, token, action='confirm', 
                                         template_name='confirmation_template',
@@ -197,6 +199,8 @@ class user_confirm(Resource):
                 confirmation_result = user.verify(token)
                 if confirmation_result:
                     user.save()
+                    # align the WebSocket Server with the confirmed user: either via AWS SNS or directly via synchronous API invocation
+                    publish_sns.publish_to_sns(user, str(user.id))
                 else:
                     # The token probably expired, so send a new confirmation email
                     token = user.generate_verification_token()

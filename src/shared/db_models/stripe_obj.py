@@ -25,6 +25,8 @@ class Stripe(db.Model):
     current_period_end_dt = Column(DateTime(), nullable=True)
     subscription_cancelled_at = Column(Integer, unique=False)
     payment_vendor_code = Column(String(64), nullable=True) # For example, 'stripe' or 'paypal'
+    total_month_minutes = Column(db.Integer)
+    current_consumed_seconds = Column(db.Integer) #seconds are stores, not minutes
 
     def __repr__(self):
         return 'id: '.join([str(id)])

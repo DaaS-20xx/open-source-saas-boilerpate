@@ -3,6 +3,7 @@ FROM python:3.9-alpine
 RUN apk update && \
     apk add --no-cache \
       gcc \
+      sudo \
       musl-dev \
       npm \
       postgresql-dev \
@@ -13,6 +14,7 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 
 RUN pip install --upgrade pip && \
+    pip install gunicorn && \
     pip install --requirement requirements.txt
 
 COPY package.json package.json
@@ -29,6 +31,9 @@ RUN npm install --global npm &&\
 
 #RUN flask dbcreate
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+#ENTRYPOINT [ "./entrypoint.sh" ]
 
-CMD [ "run" ]
+#ENTRYPOINT [ "./entrypoint_gunicorn.sh" ]
+
+#CMD [ "run" ]
+

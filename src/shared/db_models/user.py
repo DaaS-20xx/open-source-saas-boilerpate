@@ -27,6 +27,8 @@ class User(UserMixin, db.Model):
     account_id = db.Column(UUID(as_uuid=True), db.ForeignKey('account.id'))
     account = db.relationship('Account', back_populates='user', cascade='all,delete')
     created = db.Column(db.DateTime(), nullable=True)
+    ### new column: User Status ("Active" when subscription in Stripe table is created and active)
+    user_status = db.Column(db.String(30), nullable=True)
     ### new column: Subscription Plan (Small, Medium, Business)
     plan = db.Column(db.String(30), nullable=True)
     ### new column: Plan Start Date (date time)

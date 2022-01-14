@@ -1,5 +1,5 @@
 import importlib, sys
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect
 from flask_restplus import Namespace, Resource, Api
 from flask_login import login_required, current_user
 
@@ -16,6 +16,10 @@ home_app = Api (homepage_blueprint,
 home_api = Namespace('home')
 home_app.add_namespace(home_api)
 
+@homepage_blueprint.route('/')
+def index():
+    return redirect('/landing')
+
 @homepage_blueprint.route('/landing', methods=['GET'])
 def home_requests():
     return render_template('transcribe_home.html')
@@ -23,6 +27,14 @@ def home_requests():
 @homepage_blueprint.route('/pricing', methods=['GET'])
 def pricing():
     return render_template('transcribe_kit1-pricing.html')
+
+@homepage_blueprint.route('/faq', methods=['GET'])
+def faq():
+    return render_template('transcribe_kit1-faq.html')
+
+@homepage_blueprint.route('/download', methods=['GET'])
+def download_app():
+    return render_template('transcribe_kit1-download.html')
 
 @homepage_blueprint.route('/subscribe', methods=['GET'])
 @login_required

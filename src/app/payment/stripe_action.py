@@ -171,6 +171,8 @@ class StripeAction():
                     amount = data_object['amount_total']
                     plan_id = plan['id']
                     amount = plan['amount']
+                    metadata = plan['metadata']
+                    plan_minutes = metadata['Minutes']
                     current_period_start = sub['current_period_start']
                     current_period_start_dt = datetime.fromtimestamp(current_period_start)
                     current_period_end = sub['current_period_end']
@@ -190,13 +192,15 @@ class StripeAction():
                                     current_period_end_dt=current_period_end_dt,
                                     created=datetime.now(),
                                     plan_name=plan['nickname'],
+                                    total_month_minutes=plan_minutes,
+                                    current_consumed_seconds=0,
                                     subscription_cancelled_at=None)
 
                     db_access.create_stripe(new_stripe)
                     
                     #Send data to aws sqs queue as well, to sync the db on the websocket container
                     print("SEND EVENT TO publish_to_sns")
-                    publish_sns.publish_to_sns(new_stripe, str(user.id))
+                    #publish_sns.publish_to_sns(new_stripe, str(user.id))
 
             return "", 200
         except IntegrityError:
@@ -204,7 +208,9 @@ class StripeAction():
         except ValueError:
             return "Bad payload", 400
         except stripe.error.SignatureVerificationError:
-            return "Bad signature", 400
+            stacktrace = traceback.format_exc()
+            print(stacktrace)
+            return "Bad Signature " + str(stacktrace), 400
         except Exception as ex:
             stacktrace = traceback.format_exc()
             print(stacktrace)
@@ -267,6 +273,19 @@ class StripeAction():
             return jsonify(stripe_obj), 200
         else:
             return json.dumps({'message':'User was not found'}), 404
+
+    def get_active_subscription_by_email(self, user_email):
+        user = db_user_service.find_user_by_email(user_email)
+        if user == None:
+            return json.dumps({'message':'User email not found'}), 404
+        else:
+            user_id = user.id
+            stripe_obj = db_access.get_stripe(user_id=str(user_id), as_dict=True, only_active=True)
+
+            if stripe_obj != None:
+                return jsonify(stripe_obj), 200
+            else:
+                return json.dumps({'message':'User was not found'}), 404
 
     def _validate_stripe_data(self, request, webhook_from_config):
         '''

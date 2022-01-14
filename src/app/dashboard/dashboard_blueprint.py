@@ -1,5 +1,6 @@
 import importlib, sys, json
 from pathlib import Path
+from datetime import datetime
 from flask import Blueprint, render_template, jsonify, redirect, url_for, current_app
 from flask_login import login_required as flask_login_required, login_user, logout_user, current_user
 from flask_restplus import Namespace, Resource, Api
@@ -58,14 +59,17 @@ def app_index_app(path = None):
     print(current_user, file=sys.stdout)
     sub_active = action.is_user_subscription_active(False)
     print("sub_active: "+str(sub_active), file=sys.stdout)
-    variables = dict(name=current_user.username,
+    variables = dict(subscription_active=sub_active,
+                    name=current_user.username,
                     email=current_user.email,
-                    expire_date=current_user.created, # to be added a number of days, e.g. trial period
+                    created_date=current_user.created.strftime("%Y-%B-%d"), # to be added a number of days, e.g. trial period
                     user_is_paying=sub_active,
                     notifications=notifications_for_display,
                     n_messages=len(notifications))
     if sub_active==True:
-        return redirect('/billing')
+        #return redirect('/billing')
+        #return render_template('dashboard.html', **variables)
+        return render_template('profile.html', **variables)
     else:
         return render_template('dashboardpay.html', **variables)
         
@@ -89,6 +93,7 @@ def billing():
     
     variables = dict(subscription_active=sub_active,
                      name=current_user.username,
+                     email=current_user.email,
                      show_reactivate=show_reactivate,
                      subscription_cancelled_at=sub_cancelled_at,
                      subscription_data=sub_dict,
@@ -96,6 +101,22 @@ def billing():
                      n_messages=len(notifications))
     
     return render_template('billing.html', **variables)
+
+@dashboard_blueprint.route("/downloadapp")
+@flask_login_required
+def download_app_auth():
+    variables = dict(name=current_user.username,
+                     userid = current_user.id)
+    
+    return render_template('dashboarddownload.html', **variables)
+
+@dashboard_blueprint.route("/contactus")
+@flask_login_required
+def contact_us():
+    variables = dict(name=current_user.username,
+                     userid = current_user.id)
+    
+    return render_template('contact_us_auth.html', **variables)
 
 # Not actual admin page, just protected page, only for admins
 @dashboard_blueprint.route('/admin', methods=['GET'])

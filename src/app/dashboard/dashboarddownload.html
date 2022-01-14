@@ -1,0 +1,18 @@
+{% extends "base_templates/dashboard_base.html" %}
+
+{% block title %}
+Download Center
+{% endblock %}
+
+{% block content %}
+<!-- Page Heading -->
+<!--h1 class="h3 mt-3 mb-4 text-gray-800">Download and follow the installation instruction</h1-->
+
+{% include 'partials/transcribe_kit1-download_auth.html' %}
+
+<script>
+    var expiredDate = new Date("{{ expire_date }}");
+</script>
+<script src="{{ url_for("static", filename="payments/partials/countdown.js") }}"></script>
+
+{% endblock %}
